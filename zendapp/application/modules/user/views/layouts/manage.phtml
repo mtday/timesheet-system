@@ -1,0 +1,87 @@
+
+<html>
+  <head>
+	<!-- The title of this page. -->
+	<title>Milestone - <?php echo $this->escape($this->title) ?></title>
+	
+	<!-- Include the meta tags. -->
+	<?php include('ssi/metatags.inc'); ?>
+
+	<!-- Add the style sheets used to format the content. -->
+	<link rel="stylesheet" type="text/css"
+		  href="/js/ext-3.1.1/resources/css/ext-all.css?<?php print time(); ?>"/>
+	<link rel="stylesheet" href="/css/style.css?<?php print time(); ?>"/>
+	<link rel="stylesheet" href="/css/icons.css?<?php print time(); ?>"/>
+	<link rel="stylesheet" href="/css/manage.css?<?php print time(); ?>"/>
+
+	<!-- Add the user interface scripts. -->
+	<script type="text/javascript"
+			src="/js/ext-3.1.1/adapter/ext/ext-base-debug.js?<?php print time(); ?>"></script>
+	<script type="text/javascript"
+			src="/js/ext-3.1.1/ext-all-debug.js?<?php print time(); ?>"></script>
+
+	<!-- Add the requisite scripts. -->
+	<?php if ($this->scripts == "payroll"): ?>
+	  <!-- Add the payroll management scripts. -->
+      <?php include('ssi/scripts_payroll_mgmt.inc'); ?>
+	<?php endif; ?>
+	<?php if ($this->scripts == "supervisor"): ?>
+	  <!-- Add the supervisor management scripts. -->
+      <?php include('ssi/scripts_supervisor_mgmt.inc'); ?>
+	<?php endif; ?>
+	<?php if ($this->scripts == "employee"): ?>
+	  <!-- Add the employee management scripts. -->
+      <?php include('ssi/scripts_employee_mgmt.inc'); ?>
+	<?php endif; ?>
+	<?php if ($this->scripts == "contract"): ?>
+	  <!-- Add the contract management scripts. -->
+      <?php include('ssi/scripts_contract_mgmt.inc'); ?>
+	<?php endif; ?>
+	<?php if ($this->scripts == "holiday"): ?>
+	  <!-- Add the holiday management scripts. -->
+      <?php include('ssi/scripts_holiday_mgmt.inc'); ?>
+	<?php endif; ?>
+	<?php if ($this->scripts == "security"): ?>
+	  <!-- Add the security management scripts. -->
+      <?php include('ssi/scripts_security_mgmt.inc'); ?>
+	<?php endif; ?>
+	<?php if ($this->scripts == "contact"): ?>
+	  <!-- Add the contact management scripts. -->
+      <?php include('ssi/scripts_contact_mgmt.inc'); ?>
+	<?php endif; ?>
+
+  </head>
+
+  <body>
+    <center>
+
+	  <!-- Add the standard page header. -->
+      <?php include('ssi/header.inc'); ?>
+
+	  <!-- The page content. -->
+	  <div id="page">
+
+		<center>
+
+		  <div id="whole-page-content">
+
+			<!-- Add all the management actions. -->
+			<?php include('ssi/management_navigation.inc'); ?>
+
+			<!-- Add the content to the layout. -->
+			<?php echo $this->layout()->content ?>
+
+		  </div>
+
+		</center>
+
+	  </div>
+
+	  <!-- Add the footer content. -->
+      <?php include('ssi/footer.inc'); ?>
+
+    </center>
+
+  </body>
+</html>
+

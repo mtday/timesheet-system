@@ -1,0 +1,73 @@
+
+<html>
+  <head>
+	<!-- The title of this page. -->
+	<title>Milestone - <?php echo $this->escape($this->title) ?></title>
+	
+	<!-- Include the meta tags. -->
+	<?php include('ssi/metatags.inc'); ?>
+
+	<!-- Add the style sheets used to format the content. -->
+	<link rel="stylesheet" type="text/css"
+		  href="/js/ext-3.1.1/resources/css/ext-all.css?<?php print time(); ?>"/>
+	<link rel="stylesheet" href="/css/style.css?<?php print time(); ?>"/>
+	<link rel="stylesheet" href="/css/icons.css?<?php print time(); ?>"/>
+	<link rel="stylesheet" href="/css/manage.css?<?php print time(); ?>"/>
+	<link rel="stylesheet" href="/css/timesheet.css?<?php print time(); ?>"/>
+
+	<!-- Add the user interface scripts. -->
+	<script type="text/javascript"
+			src="/js/ext-3.1.1/adapter/ext/ext-base.js?<?php print time(); ?>"></script>
+	<script type="text/javascript"
+			src="/js/ext-3.1.1/ext-all.js?<?php print time(); ?>"></script>
+
+	<!-- Add the timesheet scripts. -->
+	<script src="/js/src/util/io/ServerIO.js?<?php print time(); ?>"></script>
+	<script src="/js/src/timesheet/inactivityTimer.js?<?php print time(); ?>"></script>
+	<script src="/js/src/timesheet/cellManagement.js?<?php print time(); ?>"></script>
+	<script src="/js/src/timesheet/choosePayPeriod.js?<?php print time(); ?>"></script>
+	<script src="/js/src/ui/util/ErrorMessage.js?<?php print time(); ?>"></script>
+	<script src="/js/src/action/timesheet/DoComplete.js?<?php print time(); ?>"></script>
+	<script src="/js/src/action/timesheet/DoFix.js?<?php print time(); ?>"></script>
+	<script src="/js/src/action/timesheet/DoSave.js?<?php print time(); ?>"></script>
+  </head>
+
+  <body onbeforeunload="return checkSave();">
+    <center>
+
+	  <!-- Add the standard page header. -->
+      <?php include('ssi/header.inc'); ?>
+
+	  <!-- The page content. -->
+	  <div id="page">
+
+	    <center>
+
+		  <!-- Add the content to the layout. -->
+		  <?php echo $this->layout()->content ?>
+
+	    </center>
+
+	  </div>
+
+	  <!-- Add the footer content. -->
+	  <center> <!-- This extra "center" tag makes IE work properly. -->
+		<?php include('ssi/footer.inc'); ?>
+	  </center>
+
+    </center>
+
+  </body>
+</html>
+
+<script>
+  // Do the post-startup activities.
+  Ext.onReady(function() {
+	  // Start the inactivity timer.
+	  startTimer();
+
+	  // Initialize the cell management.
+	  initCellManagement();
+  });
+</script>
+

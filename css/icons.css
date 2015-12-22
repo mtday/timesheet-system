@@ -1,0 +1,182 @@
+
+.icon-unknown {
+	background-image:		url(/images/filetypes/unknown.png) !important;
+}
+.icon-doc {
+	background-image:		url(/images/filetypes/doc.png) !important;
+}
+.icon-pdf {
+	background-image:		url(/images/filetypes/pdf.png) !important;
+}
+.icon-xls {
+	background-image:		url(/images/filetypes/xls.png) !important;
+}
+
+.icon-search {
+	background-image:		url(/images/icons/search.png) !important;
+}
+
+.icon-login {
+	background-image:		url(/images/icons/login.png) !important;
+}
+.icon-forgot-password {
+	background-image:		url(/images/icons/forgotpw.png) !important;
+}
+
+.icon-timesheet-save {
+	background-image:		url(/images/icons/timesheet_save.png) !important;
+}
+.icon-timesheet-complete {
+	background-image:		url(/images/icons/timesheet_complete.png) !important;
+}
+.icon-timesheet-fix {
+	background-image:		url(/images/icons/timesheet_fix.png) !important;
+}
+.icon-timesheet-export {
+	background-image:		url(/images/icons/timesheet_export.png) !important;
+}
+.icon-timesheet-approve {
+	background-image:		url(/images/icons/timesheet_approve.png) !important;
+}
+.icon-timesheet-disapprove {
+	background-image:		url(/images/icons/timesheet_disapprove.png) !important;
+}
+.icon-timesheet-verify {
+	background-image:		url(/images/icons/timesheet_verify.png) !important;
+}
+.icon-timesheet-unverify {
+	background-image:		url(/images/icons/timesheet_unverify.png) !important;
+}
+.icon-timesheet-view {
+	background-image:		url(/images/icons/timesheet_view.png) !important;
+}
+.icon-timesheet-edit {
+	background-image:		url(/images/icons/timesheet_edit.png) !important;
+}
+.icon-timesheet-auditlog {
+	background-image:		url(/images/icons/timesheet_auditlog.png) !important;
+}
+
+.icon-employees {
+	background-image:		url(/images/icons/employees.png) !important;
+}
+.icon-employee-add {
+	background-image:		url(/images/icons/employee_add.png) !important;
+}
+.icon-employee-delete {
+	background-image:		url(/images/icons/employee_delete.png) !important;
+}
+.icon-employee-edit {
+	background-image:		url(/images/icons/employee_edit.png) !important;
+}
+.icon-employee-go {
+	background-image:		url(/images/icons/employee_go.png) !important;
+}
+
+.icon-supervisor-add {
+	background-image:		url(/images/icons/supervisor_add.png) !important;
+}
+.icon-supervisor-delete {
+	background-image:		url(/images/icons/supervisor_delete.png) !important;
+}
+
+.icon-contracts {
+	background-image:		url(/images/icons/contracts.png) !important;
+}
+.icon-contract-add {
+	background-image:		url(/images/icons/contract_add.png) !important;
+}
+.icon-contract-delete {
+	background-image:		url(/images/icons/contract_delete.png) !important;
+}
+.icon-contract-edit {
+	background-image:		url(/images/icons/contract_edit.png) !important;
+}
+.icon-contract-go {
+	background-image:		url(/images/icons/contract_go.png) !important;
+}
+
+.icon-assignments {
+	background-image:		url(/images/icons/assignments.png) !important;
+}
+.icon-assignment-add {
+	background-image:		url(/images/icons/assignment_add.png) !important;
+}
+.icon-assignment-delete {
+	background-image:		url(/images/icons/assignment_delete.png) !important;
+}
+.icon-assignment-edit {
+	background-image:		url(/images/icons/assignment_edit.png) !important;
+}
+.icon-assignment-go {
+	background-image:		url(/images/icons/assignment_go.png) !important;
+}
+
+.icon-holidays {
+	background-image:		url(/images/icons/holidays.png) !important;
+}
+.icon-holiday-add {
+	background-image:		url(/images/icons/holiday_add.png) !important;
+}
+.icon-holiday-delete {
+	background-image:		url(/images/icons/holiday_delete.png) !important;
+}
+.icon-holiday-go {
+	background-image:		url(/images/icons/holiday_go.png) !important;
+}
+
+.icon-forms {
+	background-image:		url(/images/icons/forms.png) !important;
+}
+.icon-form-add {
+	background-image:		url(/images/icons/form_add.png) !important;
+}
+.icon-form-delete {
+	background-image:		url(/images/icons/form_delete.png) !important;
+}
+.icon-form-edit {
+	background-image:		url(/images/icons/form_edit.png) !important;
+}
+
+.icon-openings {
+	background-image:		url(/images/icons/openings.png) !important;
+}
+.icon-opening-add {
+	background-image:		url(/images/icons/opening_add.png) !important;
+}
+.icon-opening-delete {
+	background-image:		url(/images/icons/opening_delete.png) !important;
+}
+.icon-opening-edit {
+	background-image:		url(/images/icons/opening_edit.png) !important;
+}
+
+.icon-vrs {
+	background-image:		url(/images/icons/vrs.png) !important;
+}
+.icon-vr-add {
+	background-image:		url(/images/icons/vr_add.png) !important;
+}
+.icon-vr-delete {
+	background-image:		url(/images/icons/vr_delete.png) !important;
+}
+.icon-vr-edit {
+	background-image:		url(/images/icons/vr_edit.png) !important;
+}
+.icon-vr-report {
+	background-image:		url(/images/icons/vr_report.png) !important;
+}
+
+.icon-contacts {
+	background-image:		url(/images/icons/contacts.png) !important;
+}
+.icon-contact-add {
+	background-image:		url(/images/icons/contact_add.png) !important;
+}
+.icon-contact-delete {
+	background-image:		url(/images/icons/contact_delete.png) !important;
+}
+.icon-contact-edit {
+	background-image:		url(/images/icons/contact_edit.png) !important;
+}
+

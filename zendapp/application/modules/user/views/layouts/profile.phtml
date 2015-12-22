@@ -1,0 +1,57 @@
+
+<html>
+  <head>
+	<!-- The title of this page. -->
+	<title>Milestone - <?php echo $this->escape($this->title) ?></title>
+	
+	<!-- Include the meta tags. -->
+	<?php include('ssi/metatags.inc'); ?>
+
+	<!-- Add the style sheets used to format the content. -->
+	<link rel="stylesheet" type="text/css"
+		  href="/js/ext-3.1.1/resources/css/ext-all.css?<?php print time(); ?>"/>
+	<link rel="stylesheet" href="/css/style.css?<?php print time(); ?>"/>
+	<link rel="stylesheet" href="/css/icons.css?<?php print time(); ?>"/>
+	<link rel="stylesheet" href="/css/manage.css?<?php print time(); ?>"/>
+
+	<!-- Add the user interface scripts. -->
+	<script type="text/javascript"
+			src="/js/ext-3.1.1/adapter/ext/ext-base-debug.js?<?php print time(); ?>"></script>
+	<script type="text/javascript"
+			src="/js/ext-3.1.1/ext-all-debug.js?<?php print time(); ?>"></script>
+
+	<!-- Add the profile update scripts. -->
+	<?php include('ssi/scripts_profile.inc'); ?>
+
+  </head>
+
+  <body>
+    <center>
+
+	  <!-- Add the standard page header. -->
+      <?php include('ssi/header.inc'); ?>
+
+	  <!-- The page content. -->
+	  <div id="page">
+
+		<center>
+
+		  <div id="whole-page-content">
+
+			<!-- Add the content to the layout. -->
+			<?php echo $this->layout()->content ?>
+
+		  </div>
+
+		</center>
+
+	  </div>
+
+	  <!-- Add the footer content. -->
+      <?php include('ssi/footer.inc'); ?>
+
+    </center>
+
+  </body>
+</html>
+

@@ -1,0 +1,9 @@
+# Rewrite rules for Zend Framework
+RewriteEngine on
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule !(phpBB3|wiki|\.(js|ico|txt|gif|jpeg|jpg|png|css|pdf|doc))$ index.php
+
+# Security: Don't allow browsing of directories
+Options -Indexes
+

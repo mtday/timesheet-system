@@ -1,0 +1,409 @@
+
+<?php include('ssi/scripts_payroll_mgmt.inc'); ?>
+
+<!-- Add all the management navigation actions. -->
+<div id="management-navigation-div">
+  <?php include('ssi/management_navigation.inc'); ?>
+</div>
+
+<?php
+	// Make some of the view variables easier to access.
+	$pp = $this->payPeriod;
+?>
+
+<?php
+	// Make sure some timesheets are available.
+	if (isset($this->timesheets) && count($this->timesheets) > 0):
+		// Build a comma-separated list of employee ids.
+		$empIdArr = array();
+		foreach ($this->timesheets as $ts)
+			$empIdArr[] = $ts->employee->id;
+		$empIds = join($empIdArr, ',');
+
+		// This is the link variable.
+		$lnk = "/day/" . $pp->start . "?ids=$empIds";
+		?>
+		<!-- Display the pay period data information. -->
+		<table>
+		  <tr>
+			<td id="pay-period-nav">
+
+			  <table id="nav-table">
+				<tr>
+				  <td>
+					Pay Period:
+				  </td>
+				  <td id="prev">
+					<a href="/payroll/timesheet/prev<?php echo $lnk; ?>"
+					   title="Show the previous pay period"><img
+					   src="/images/icons/prev.png" border="0"
+					   alt="Show the previous pay period"></a>
+				  </td>
+				  <td id="range">
+					<?php print date('M d', strtotime($pp->start)); ?> -
+					<?php print date('M d', strtotime($pp->end)); ?>
+				  </td>
+				  <td id="next">
+					<a href="/payroll/timesheet/next<?php echo $lnk; ?>"
+					   title="Show the next pay period"><img
+					   src="/images/icons/next.png" border="0"
+					   alt="Show the next pay period"></a>
+				  </td>
+				  <td id="calendar">
+					<a href="javascript:chooseTimesheetPayPeriod('<?php echo $empIds; ?>');"
+					   title="Choose a pay period to view"><img
+					   src="/images/icons/calendar.png" border="0"
+					   alt="Choose a pay period to view"></a>
+					<div id="date-picker"></div>
+				  </td>
+				</tr>
+			  </table>
+
+			</td>
+		  </tr>
+		</table>
+
+		<?php
+		// Iterate over the available timesheets.
+		foreach ($this->timesheets as $ts):
+			$emp = $ts->employee;
+			$pp = $ts->pay_period;
+			$cons = $ts->contracts;
+			?>
+			<!-- Put the whole thing in a div. -->
+			<div id="timesheet-div">
+
+			  <!-- Display the timesheet for the given pay period. -->
+			  <table id="timesheet-table">
+				<tr>
+				  <td>
+
+					<!-- Holds the timesheet action buttons. -->
+					<table id="timesheet-action-buttons">
+					  <tr>
+						<td>
+
+						  <div id="verify-button-<?php print $ts->id; ?>"></div>
+						  <div id="unverify-button-<?php print $ts->id; ?>"></div>
+						  <div id="view-audit-log-button-<?php print $ts->id; ?>"></div>
+						  <script>
+						  <?php if ($ts->approved == "1" && $ts->verified == "0"): ?>
+							  new Ext.Button(new action.payroll.Verify(
+									<?php print $ts->id; ?>));
+						  <?php elseif ($ts->approved == "1" && $ts->verified == "1"): ?>
+							  new Ext.Button(new action.payroll.Unverify(
+									<?php print $ts->id; ?>));
+						  <?php endif; ?>
+							  new Ext.Button(new action.payroll.DoViewAuditLog(<?php print $ts->id; ?>)).
+								  render('view-audit-log-button-<?php print $ts->id; ?>');
+						  </script>
+
+						</td>
+					  </tr>
+					</table>
+
+				  </td>
+				</tr>
+				<tr>
+				  <td>
+
+					<!-- Display the timesheet user information. -->
+					<table id="timesheet-user-table">
+					  <tr>
+						<td id="employee-label">Employee:</td>
+						<td id="employee-name">
+						  <?php print $emp->full_name; ?>
+						</td>
+						<td id="timesheet-completion">
+						  <?php print TimesheetHelper::getStatus($ts); ?>
+						</td>
+					  </tr>
+					</table>
+				  </td>
+				</tr>
+				<tr>
+				  <td>
+
+					<!-- Display the timesheet data information. -->
+					<table id="timesheet-data-table">
+
+					  <!-- The first row is the pay period navigation and the date. -->
+					  <tr>
+						<td id="pay-period-nav">
+						  <!-- No pay period navigation here. -->
+						</td>
+						<?php
+							// Get the date to start with.
+							$date = strtotime($pp->start . " -0000");
+
+							// Keep track of the number of columns on this timesheet.
+							$cols = 2;
+
+							// Iterate over the available days in the pay period.
+							while ($date <= strtotime($pp->end . " -0000") && $cols++) {
+								// Get the class for this day.
+								$class = 'class="header-';
+								$class .= (TimesheetHelper::isWeekend($date) ? "weekend" :
+									(TimesheetHelper::isHoliday($ts, $date) ?
+										"holiday" : "day")) . '"';
+
+								// Print this day.
+								print "<td $class>" . gmdate('n/j', $date) . "</td>\n";
+
+								// Go to the next day.
+								$date += 60 * 60 * 24;
+							}
+						?>
+
+						<!-- Add the column for the totals. -->
+						<td id="header-contract-total" rowspan="2">Total</td>
+					  </tr>
+
+					  <!-- The second row is the day of the week. -->
+					  <tr>
+						<td id="contract-header">Contract/Task</td>
+						<?php
+							// Get the date to start with.
+							$date = strtotime($pp->start . " -0000");
+
+							// Iterate over the available days in the pay period.
+							while ($date <= strtotime($pp->end . " -0000")) {
+								// Get the class for this day.
+								$class = 'class="header-day-';
+								$class .= (TimesheetHelper::isWeekend($date) ? "weekend" :
+									(TimesheetHelper::isHoliday($ts, $date) ?
+										"holiday" : "day")) . '"';
+
+								// Print this day.
+								print "<td $class>" . gmdate('D', $date) . "</td>\n";
+
+								// Go to the next day.
+								$date += 60 * 60 * 24;
+							}
+						?>
+					  </tr>
+
+					  <!-- This section displays the contracts and their hours. -->
+
+					  <?php
+						  // Keep track of the previous contract.
+						  $prevContract = null;
+
+						  // Iterate over each contract in the timesheet.
+						  foreach ($cons as $contract) {
+							  // Check to see if we need to add the separator in between
+							  // the admin and non-admin contracts.
+							  if (isset($prevContract) && !$prevContract->admin &&
+									  $contract->admin)
+								  print '<tr>
+											<td id="contract-separator"
+												colspan="' . $cols . '">&nbsp;</td>
+										 </tr>';
+							  ?>
+							  <tr>
+								<!-- Add the contract label. -->
+								<td class="contract-label">
+								  <?php
+									  print $contract->description;
+								      if (isset($contract->labor_cat)) {
+										  print " <small>(";
+										  print $contract->labor_cat;
+										  print ")</small>";
+									  }
+								  ?>
+								</td>
+
+								<?php
+									// Get the date to start with.
+									$date = strtotime($pp->start . " -0000");
+
+									// Iterate over the available days in the pay period.
+									while ($date <= strtotime($pp->end . " -0000")) {
+										// Get the class for this day.
+										$class = (TimesheetHelper::isWeekend($date) ? "weekend" :
+											(TimesheetHelper::isHoliday($ts, $date) ?
+												"holiday" : "day"));
+
+										// Get the hours for this entry.
+										$hours = TimesheetHelper::getHours($ts, $date,
+												$contract->contract_id, $contract->assignment_id);
+
+										// Check to see if this contract has expired.
+										$expired = TimesheetHelper::isExpired($ts, $date,
+												$contract->assignment_id);
+
+										// Show the expired field if necessary.
+										if ($expired)
+											// Print the expired image.
+											print "<td class=\"$class-unavailable\">" .
+												"<img src=\"/images/icons/bullet_red.png\" " .
+												"border=\"0\" alt=\"Contract unavailable\" " .
+												"title=\"Contract unavailable\"/></td>\n";
+
+										else
+											// Print this day.
+											print "<td class=\"$class\">$hours</td>\n";
+
+										// Go to the next day.
+										$date += 60 * 60 * 24;
+									}
+
+									// Add the column for the totals.
+									print '<td id="contot' . $ts->id . '_' . $contract->contract_id . '_' .
+											$contract->assignment_id . '" ' . 'class="contract-total">' .
+										TimesheetHelper::getContractTotal($ts,
+												$contract->contract_id, $contract->assignment_id) .  '</td>';
+								?>
+							  </tr>
+							  <?php
+
+							  // Update the previous contract.
+							  $prevContract = $contract;
+						  }
+					  ?>
+
+					  <!-- This row displays the daily totals. -->
+					  <tr>
+						<td id="label-daily-total">Total</td>
+						<?php
+							// Get the date to start with.
+							$date = strtotime($pp->start . " -0000");
+
+							// Iterate over the available days in the pay period.
+							while ($date <= strtotime($pp->end . " -0000")) {
+								// Get the total hours for this day.
+								$total = TimesheetHelper::getDayTotal($ts, $date);
+
+								// Print this day.
+								print '<td id="daytot' . $ts->id . '_' . gmdate('Ymd', $date) . '" ' .
+									'class="daily-total">' . $total . "</td>\n";
+
+								// Go to the next day.
+								$date += 60 * 60 * 24;
+							}
+
+							// Add the total hours for the timesheet.
+							print '<td id="total' . $ts->id . '" class="total">' .
+								TimesheetHelper::getTotal($ts) . '</td>';
+						?>
+					  </tr>
+
+					  <!-- This row displays the weekly totals. -->
+					  <tr>
+						<td id="label-weekly-total">Weekly Totals</td>
+						<?php
+							// Get the date to start with.
+							$date = strtotime($pp->start . " -0000");
+
+							// Keep track of the number of columns we need to span.
+							$colspan = 0;
+
+							// Iterate over the available days in the pay period.
+							while ($date <= strtotime($pp->end . " -0000")) {
+								// Determine what the day is.
+								$day = gmdate('D', $date);
+
+								if ($day == 'Fri') {
+									$hours = TimesheetHelper::getWeekHours($ts, $date);
+
+									// Print this day.
+									print '<td id="weektot' . $ts->id . '_' . gmdate('Ymd', $date) . '" ' .
+										'class="weekly-total" colspan="' . ($colspan + 1) . '">' .
+										$hours . "</td>\n";
+
+									$colspan = 0;
+								} else if (TimesheetHelper::isWeekend($date)) {
+									$colspan = 0;
+
+									// Print this day as it's own cell.
+									print '<td id="weektot' . $ts->id . '_' . gmdate('Ymd', $date) . '" ' .
+										'class="weekly-total-weekend">&nbsp;</td>' . "\n";
+								} else
+									$colspan++;
+
+								// Go to the next day.
+								$date += 60 * 60 * 24;
+							}
+
+							if ($colspan > 0) {
+								$hours = TimesheetHelper::getWeekHours($ts, $date);
+
+								// Print this day.
+								print '<td id="weektot' . $ts->id . '_' . gmdate('Ymd', $date) . '" ' .
+									'class="weekly-total" colspan="' . $colspan . '">' .
+									$hours . "</td>\n";
+							}
+
+							// Under the total hours for the whole timesheet.
+							print '<td class="weekly-total-total">&nbsp;</td>';
+						?>
+					  </tr>
+					</table>
+
+				  </td>
+				</tr>
+			  </table>
+
+			</div>
+
+			<script>
+			  // Build the array of available timesheets.
+			  var timesheetIds = [ ];
+			  <?php
+				  // Make sure some timesheets are available.
+				  if (isset($this->timesheets) && count($this->timesheets) > 0):
+				  	  foreach ($this->timesheets as $ts):
+						  // Print this timesheet id.
+						  print "timesheetIds.push('$ts->id');\n";
+					  endforeach;
+				  endif;
+			  ?>
+
+			  // Build the array of available days.
+			  var days = [ ];
+			  <?php
+				  // Get the date to start with.
+				  $date = strtotime($pp->start . " -0000");
+
+				  // Iterate over the available days in the pay period.
+				  while ($date <= strtotime($pp->end . " -0000")) {
+					  // Calculate the date.
+					  $day = gmdate('Ymd', $date);
+
+					  // Print this day.
+					  print "days.push('$day');\n";
+
+					  // Go to the next day.
+					  $date += 60 * 60 * 24;
+				  }
+			  ?>
+
+			  // Build the array of available contract ids.
+			  var contractIds = [ ];
+			  <?php
+				  // Iterate over each contract in the timesheet.
+				  foreach ($cons as $contract)
+					  print "contractIds.push($contract->contract_id);\n";
+			  ?>
+
+			  // Build the array of available assignment ids.
+			  var assignmentIds = [ ];
+			  <?php
+				  // Iterate over each contract in the timesheet.
+				  foreach ($cons as $contract) {
+					  if (isset($contract->assignment_id))
+						  print "assignmentIds.push($contract->contract_id + \"_\" + $contract->assignment_id);\n";
+					  else
+						  print "assignmentIds.push($contract->contract_id + \"_\");\n";
+				  }
+			  ?>
+			</script>
+			<?php
+		endforeach;
+	else:
+		?>
+		<i>No timesheets available for viewing.</i>
+		<?php
+	endif;
+?>
+

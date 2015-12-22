@@ -1,0 +1,68 @@
+
+#page #management-navigation-div {
+	text-align:				left;
+	width:					770px;
+}
+
+#page #management-navigation {
+	padding-bottom:			20px;
+	width:					100%;
+}
+
+#page #management-navigation ul {
+	margin:					0px;
+}
+
+#page #management-navigation li {
+	display:				inline;
+	list-style:				none;
+	padding-right:			20px;
+}
+
+#page #management-navigation a {
+	color:					#606060;
+	font-size:				9pt;
+}
+
+#page #management-navigation a:visited {
+	color:					#606060;
+}
+
+#page #management-navigation a:hover {
+	text-decoration:		underline;
+}
+
+#pay-period-nav {
+	text-align:				center;
+	vertical-align:			middle;
+}
+
+#pay-period-nav #nav-table {
+	border-collapse:		collapse;
+	width:					100%;
+}
+
+#pay-period-nav #nav-table #prev {
+	padding-left:			10px;
+	text-align:				right;
+}
+
+#pay-period-nav #nav-table #next {
+	padding-right:			10px;
+	text-align:				left;
+}
+
+#pay-period-nav #nav-table #range {
+	padding:				0px 10px 0px 10px;
+	white-space:			nowrap;
+}
+
+#pay-period-nav #nav-table #calendar {
+	padding-right:			10px;
+}
+
+#pay-period-nav #nav-table #calendar #date-picker {
+	position:				absolute;
+	z-index:				1000;
+}
+

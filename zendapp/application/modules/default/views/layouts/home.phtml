@@ -1,0 +1,39 @@
+
+<html>
+  <head>
+	<!-- The title of this page. -->
+	<title>Milestone Intelligence Group</title>
+	
+	<!-- Include the meta tags. -->
+    <?php include("ssi/metatags.inc"); ?>
+
+	<!-- Add the style sheet used to format the content. -->
+	<link rel="stylesheet" href="/css/style.css?<?php print time(); ?>"/>
+	<link rel="stylesheet" href="/css/icons.css?<?php print time(); ?>"/>
+  </head>
+
+  <body>
+    <center>
+
+	  <!-- Add the standard page header. -->
+      <?php include("ssi/header.inc"); ?>
+
+	  <!-- The page content. -->
+	  <div id="page">
+
+		<center>
+
+		  <!-- Add the content to the layout. -->
+		  <?php echo $this->layout()->content ?>
+
+		</center>
+
+	  </div>
+
+	  <!-- Add the footer content. -->
+      <?php include("ssi/footer.inc"); ?>
+
+    </center>
+  </body>
+</html>
+

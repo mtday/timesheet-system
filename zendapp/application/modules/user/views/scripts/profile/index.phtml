@@ -1,0 +1,55 @@
+
+<!-- This is where the profile information will be rendered. -->
+<table width="100%">
+  <tr>
+	<td valign="top">
+	  <div id="profile-update-panel"></div>
+	</td>
+	<td valign="top" style="padding-left:20px;">
+	  <div id="supervisor-grid"></div>
+	</td>
+  </tr>
+</table>
+
+<script>
+  // Invoked when the page is ready.
+  Ext.onReady(function() {
+	  // Create the employee.
+	  var employee = {
+		  data: {
+			  id: <?php print $this->employee->id; ?>,
+			  first_name: '<?php print $this->employee->first_name; ?>',
+			  last_name: '<?php print $this->employee->last_name; ?>',
+			  login: '<?php print $this->employee->login; ?>',
+			  email: '<?php print $this->employee->email; ?>',
+			  division: '<?php print $this->employee->division; ?>',
+			  personnel_type: '<?php print $this->employee->personnel_type; ?>'
+		  }
+	  }
+
+	  // Create the panel.
+	  new ui.panel.employee.ProfileUpdatePanel({
+		  // Specify where the panel will be rendered.
+		  renderTo: 'profile-update-panel',
+
+		  // Provide the employee data.
+		  employee: employee
+	  });
+
+	  // Create the supervisor grid.
+	  new ui.grid.SupervisorGrid({
+		  // Specify where the grid will be rendered.
+		  renderTo: 'supervisor-grid',
+
+		  // Don't include the supervisor toolbar.
+		  includeToolbar: false,
+
+		  // Set the height.
+		  height: 140,
+
+		  // Provide the employee data.
+		  employee: employee
+	  });
+  });
+</script>
+

@@ -1,0 +1,28 @@
+
+<!-- This is where the employee grid and panels will be rendered. -->
+<div id="employee-management-grid"></div>
+<div id="employee-add-panel"></div>
+<div id="employee-update-panel"></div>
+<div id="employee-contract-grid"></div>
+<div id="assignment-add-panel"></div>
+<div id="assignment-update-panel"></div>
+
+<script>
+  // Keep track of the available permissions.
+  var isAdmin = <?php print $this->employee->admin ? "true" : "false"; ?>;
+  var isPayroll = <?php print $this->employee->payroll ? "true" : "false"; ?>;
+  var isManager = <?php print $this->employee->manager ? "true" : "false"; ?>;
+  var isSecurity = <?php print $this->employee->security ? "true" : "false"; ?>;
+  var isSuper = <?php print $this->employee->supervisor ? "true" : "false"; ?>;
+  var isWiki = <?php print $this->employee->wiki ? "true" : "false"; ?>;
+
+  // Invoked when the page is ready.
+  Ext.onReady(function() {
+	  // Create the grid.
+	  new ui.grid.EmployeeGrid({
+		  // Specify where the grid will be rendered.
+		  renderTo: 'employee-management-grid'
+	  });
+  });
+</script>
+

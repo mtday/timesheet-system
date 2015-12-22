@@ -1,0 +1,42 @@
+
+<h1>Milestone Forms and Documents</h1>
+
+
+<!-- This is where the form information will be rendered. -->
+<table width="100%">
+  <tr>
+	<td valign="top">
+	  <div id="form-grid"></div>
+	</td>
+	<td valign="top">
+	  <div id="form-description-panel"></div>
+	</td>
+  </tr>
+</table>
+
+<script>
+  // Is this employee a manager?
+  <?php
+	  $isManager = false;
+	  foreach ($this->employee->roles as $role)
+		  if ($role->name == "manager")
+			  $isManager = true;
+	  print "var isManager = " . ($isManager ? "true" : "false") . ";\n";
+  ?>
+
+  // Invoked when the page is ready.
+  Ext.onReady(function() {
+	  // Create the form grid.
+	  new ui.grid.FormGrid({
+		  // Specify where the grid will be rendered.
+		  renderTo: 'form-grid'
+	  });
+
+	  // Create the description panel.
+	  new ui.panel.form.FormDescriptionPanel({
+		  // Specify where the panel will be rendered.
+		  renderTo: 'form-description-panel'
+	  });
+  });
+</script>
+

@@ -1,0 +1,26 @@
+
+<!-- This is where the contract grid and panels will be rendered. -->
+<div id="contract-management-grid"></div>
+<div id="contract-add-panel"></div>
+<div id="contract-update-panel"></div>
+<div id="contract-employee-grid"></div>
+<div id="assignment-add-panel"></div>
+<div id="assignment-update-panel"></div>
+
+<script>
+  // Keep track of the available permissions.
+  var isAdmin = <?php print $this->employee->admin ? "true" : "false"; ?>;
+  var isPayroll = <?php print $this->employee->payroll ? "true" : "false"; ?>;
+  var isManager = <?php print $this->employee->manager ? "true" : "false"; ?>;
+  var isSuper = <?php print $this->employee->supervisor ? "true" : "false"; ?>;
+
+  // Invoked when the page is ready.
+  Ext.onReady(function() {
+	  // Create the grid.
+	  var grid = new ui.grid.ContractGrid({
+		  // Specify where the grid will be rendered.
+		  renderTo: 'contract-management-grid'
+	  });
+  });
+</script>
+

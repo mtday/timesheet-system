@@ -1,0 +1,64 @@
+
+<?php
+	// Make some of the view variables easier to access.
+	$pp = $this->payPeriod;
+?>
+
+<!-- Display the pay period data information. -->
+<table>
+  <tr>
+	<td id="pay-period-nav">
+
+	  <table id="nav-table">
+		<tr>
+		  <td nowrap>
+			Pay Period:
+		  </td>
+		  <td id="prev">
+			<a href="/supervisor/index/prev/day/<?php echo $pp->start; ?>"
+			   title="Show the previous pay period"><img
+			   src="/images/icons/prev.png" border="0"
+			   alt="Show the previous pay period"></a>
+		  </td>
+		  <td id="range">
+			<?php print date('M j', strtotime($pp->start)); ?> -
+			<?php print date('M j', strtotime($pp->end)); ?>
+		  </td>
+		  <td id="next">
+			<a href="/supervisor/index/next/day/<?php echo $pp->start; ?>"
+			   title="Show the next pay period"><img
+			   src="/images/icons/next.png" border="0"
+			   alt="Show the next pay period"></a>
+		  </td>
+		  <td id="calendar">
+			<a href="javascript:choosePayPeriod();"
+			   title="Choose a pay period to view"><img
+			   src="/images/icons/calendar.png" border="0"
+			   alt="Choose a pay period to view"></a>
+			<div id="date-picker"></div>
+		  </td>
+		</tr>
+	  </table>
+
+	</td>
+  </tr>
+</table>
+
+
+<!-- This is where the available timesheets will be displayed. -->
+<div id="supervised-grid"></div>
+
+<script>
+  // Invoked when the page is ready.
+  Ext.onReady(function() {
+	  // Create the grid.
+	  new ui.grid.SupervisedGrid({
+		  // Specify where the grid will be rendered.
+		  renderTo: 'supervised-grid',
+
+		  // Set the pay period start date.
+		  payPeriodStart: '<?php print $this->payPeriod->start; ?>'
+	  });
+  });
+</script>
+

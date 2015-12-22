@@ -1,0 +1,17 @@
+
+<!-- This is where the holiday grid and panels will be rendered. -->
+<div id="holiday-management-grid"></div>
+<div id="holiday-add-panel"></div>
+<div id="holiday-update-panel"></div>
+
+<script>
+  // Invoked when the page is ready.
+  Ext.onReady(function() {
+	  // Create the grid.
+	  var grid = new ui.grid.HolidayGrid({
+		  // Specify where the grid will be rendered.
+		  renderTo: 'holiday-management-grid'
+	  });
+  });
+</script>
+

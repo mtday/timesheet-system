@@ -1,0 +1,427 @@
+
+/* Standard Elements */
+
+html, body {
+	background-color:		#073e62;
+	color:					#606060;
+	font-family:			'Trebuchet MS', Verdana, sans-serif;
+	font-size:				10pt;
+	margin:					0px;
+}
+
+p {
+	margin-bottom:			14px;
+}
+
+a {
+	color:					blue;
+	text-decoration:		none;
+}
+
+a:visited {
+	color:					blue;
+}
+
+a:hover {
+	text-decoration:		underline;
+}
+
+input {
+	border:					1px solid #ccc3b9;
+	font-family:			Verdana, sans-serif;
+	padding:				1px 3px 1px 3px;
+}
+
+input:focus {
+	border:					1px solid #74afd6;
+}
+
+h1 {
+	color:					#a7430c;
+	font-family:			Verdana, sans-serif;
+	font-weight:			normal;
+	font-size:				13.5pt;
+	letter-spacing:			-0.06em;
+	margin:					8px 0px 8px 0px;
+}
+
+h2 {
+	color:					#0e77bb;
+	font-family:			'Trebuchet MS', sans-serif;
+	font-weight:			bold;
+	font-size:				10pt;
+	margin:					7px 0px 7px 0px;
+}
+
+h3 {
+	color:					#0e77bb;
+	font-family:			'Trebuchet MS', sans-serif;
+	font-weight:			bold;
+	font-size:				10pt;
+	margin:					6px 0px 6px 0px;
+}
+
+.error {
+	color:					red;
+}
+
+
+/* Upper Banner */
+
+#upper-banner {
+	background-color:		#073e62;
+	border-bottom:			1px solid #74afd6;
+	color:					#ebff99;
+	font-size:				8pt;
+	height:					20px;
+	padding-top:			8px;
+}
+
+
+/* Title Banner */
+
+#title-banner {
+	background-color:		#ffffff;
+	border-bottom:			1px solid #cecab9;
+	height:					87px;
+}
+
+#title-banner #logo-banner {
+	background:				url(/images/framework/logobanner.jpg) no-repeat;
+	height:					87px;
+	width:					800px;
+}
+
+#title-banner #logo-banner #upper-navigation {
+	float:					right;
+	padding-top:			20px;
+	text-align:				right;
+	width:					580px;
+}
+
+#title-banner #logo-banner #upper-navigation ul {
+	margin:					0px;
+}
+
+#title-banner #logo-banner #upper-navigation li {
+	display:				inline;
+	list-style:				none;
+	padding:				0px 7px 0px 8px;
+}
+
+#title-banner #logo-banner #upper-navigation li.first {
+	border-left:			0px;
+}
+
+#title-banner #logo-banner #upper-navigation a {
+	color:					#a7430c;
+	font-size:				8pt;
+}
+
+#title-banner #logo-banner #upper-navigation a:visited {
+	color:					#a7430c;
+}
+
+#title-banner #logo-banner #lower-navigation {
+	float:					right;
+	text-align:				right;
+	padding-top:			22px;
+	width:					800px;
+}
+
+#title-banner #logo-banner #lower-navigation ul {
+	margin:					0px;
+}
+
+#title-banner #logo-banner #lower-navigation li {
+	display:				inline;
+	list-style:				none;
+	padding:				0px 10px 0px 11px;
+}
+
+#title-banner #logo-banner #lower-navigation li.first {
+	border-left:			0px;
+}
+
+#title-banner #logo-banner #lower-navigation a {
+	color:					#073e62;
+	font-size:				9.5pt;
+}
+
+#title-banner #logo-banner #lower-navigation a:hover {
+	text-decoration:		none;
+}
+
+#title-banner #logo-banner #lower-navigation a:visited {
+	color:					#073e62;
+}
+
+
+/* Middle Banner */
+
+#middle-banner {
+	background-color:		#eae7d2;
+	border-bottom:			1px solid #cecab9;
+}
+
+#middle-banner #middle-banner-home {
+	background:				url(/images/framework/middlebanner.jpg) no-repeat;
+	height:					176px;/* Firefox */
+	#height:				190px;/* Internet Explorer */
+	padding:				14px 10px 0px 10px;
+	text-align:				left;
+	width:					780px;/* Firefox */
+	#width:					796px;/* Internet Explorer */
+}
+
+#middle-banner #middle-banner-aux {
+	background:				url(/images/framework/middlebannertop.jpg) no-repeat;
+	padding:				14px 10px 0px 10px;/* Firefox */
+	#padding:				0px 10px 0px 10px;/* Internet Explorer */
+	text-align:				left;
+	width:					780px;/* Firefox */
+	#width:					796px;/* Internet Explorer */
+}
+
+
+/* Page */
+
+#page {
+	background-color:		white;
+	text-align:				left;
+	width:					100%;
+}
+
+#page #page-table {
+	width:					790px;
+}
+
+#login-table {
+	padding:				40px;
+}
+
+
+
+/* Content that spans the whole page. */
+
+#page #whole-page-content {
+	padding:				8px 0px 20px 0px;
+	text-align:				left;
+	width:					780px;/* Firefox */
+	#width:					784px;/* Internet Explorer */
+}
+
+
+/* The left side of the page. */
+
+#page #left-content {
+	padding:				8px 8px 20px 0px;
+	text-align:				left;
+	vertical-align:			top;
+	width:					554px;
+}
+
+
+/* The right side of the page. */
+
+#page #right-content {
+	padding:				8px 8px 20px 0px;
+	text-align:				left;
+	vertical-align:			top;
+	width:					206px;
+}
+
+/* Home page core services */
+
+#page #right-content #core-services {
+	margin:					0px;
+	padding-left:			18px;
+	padding-top:			0px;
+}
+
+#page #right-content #core-services li {
+	list-style-image:		url(/images/framework/bullet.gif);
+	list-style:				normal;
+	margin-left:			0px;
+}
+
+
+/* Contact Us page */
+
+#page #whole-page-content #contact-table {
+	padding-left:			24px;
+}
+
+#page #whole-page-content #contact-table .contact-label {
+	font-size:				10pt;
+	padding-right:			24px;
+	text-align:				right;
+	vertical-align:			top;
+}
+
+#page #whole-page-content #contact-table .contact-value {
+	font-size:				10pt;
+	vertical-align:			top;
+}
+
+#page #whole-page-content #contact-table .email {
+	font-size:				10pt;
+	vertical-align:			middle;
+}
+
+#page #whole-page-content #contact-table .email-description {
+	font-size:				9pt;
+	padding-left:			20px;
+	vertical-align:			middle;
+}
+
+
+/* Partners page */
+
+#page #whole-page-content #partner-table {
+	padding-left:			24px;
+}
+
+#page #whole-page-content #partner-table td {
+	padding:				14px;
+}
+
+#page #whole-page-content #partner-table .partner-image {
+	padding:				10px;
+	text-align:				center;
+	vertical-align:			top;
+	border:					1px solid #ccc3b9;
+}
+
+
+/* Page Footer */
+
+#footer-banner-home {
+	background-color:		#ffffff;
+	clear:					both;
+	height:					85px;
+	vertical-align:			bottom;
+}
+
+#footer-banner {
+	background-color:		#ffffff;
+	clear:					both;
+	height:					25px;
+	vertical-align:			bottom;
+}
+
+#footer {
+	font-size:				8pt;
+	padding-left:			8px;
+	width:					792px;
+}
+
+#footer a {
+	color:					#0e77bb;
+}
+
+#footer a:visited {
+	color:					#0e77bb;
+}
+
+#footer #copyright {
+	float:					left;
+	padding:				5px 10px 5px 4px;
+	text-align:				left;
+	width:					460px;
+}
+
+#footer #legal {
+	float:					right;
+	padding:				5px 10px 5px 10px;
+	text-align:				right;
+	width:					280px;
+}
+
+#footer #contact {
+	float:					left;
+	padding:				5px 10px 5px 4px;
+	text-align:				left;
+	width:					330px;
+}
+
+#footer #contact #address {
+	float:					left;
+	padding:				0px 30px 0px 0px;
+	text-align:				left;
+	white-space:			nowrap;
+}
+
+#footer #contact #phone {
+	float:					right;
+	padding:				0px 10px 0px 0px;
+	text-align:				left;
+	white-space:			nowrap;
+}
+
+#footer #host {
+	float:					right;
+	padding:				6px 10px 5px 10px;
+	text-align:				right;
+	width:					280px;
+}
+
+#footer #email {
+	float:					right;
+	padding:				5px 10px 5px 10px;
+	text-align:				right;
+	white-space:			nowrap;
+	width:					280px;
+}
+
+
+/* Lower Banner */
+
+#lower-banner-home {
+	background-color:		#073e62;
+	border-top:				1px solid #74afd6;
+	color:					#ebff99;
+	font-size:				8pt;
+	height:					20px;
+}
+
+#lower-banner {
+	background-color:		#073e62;
+	border-top:				1px solid #74afd6;
+	color:					#ebff99;
+	font-size:				8pt;
+	height:					1px;
+}
+
+
+/* Miscellaneous Styles */
+
+.indented {
+	padding-left:			20px;
+}
+
+.centered-image {
+	text-align:				center;
+}
+
+.image-caption {
+	font-size:				8pt;
+}
+
+.li {
+	list-style-image:		url(/images/framework/bullet.gif);
+	list-style:				normal;
+	margin-left:			35px;
+}
+
+.table-label {
+	font-size:				10pt;
+	font-weight:			bold;
+	padding:				0px 15px 4px 0px;
+}
+
+.table-value {
+	font-size:				10pt;
+	padding:				0px 15px 4px 0px;
+}
+
