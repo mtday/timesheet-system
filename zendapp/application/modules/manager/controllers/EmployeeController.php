@@ -56,8 +56,6 @@ class Manager_EmployeeController extends BaseController
 				$privileges[] = 'manager';
 			if ($this->getBool('security') && ($me->security || $me->admin))
 				$privileges[] = 'security';
-			if ($this->getBool('wiki') && ($me->wiki || $me->admin))
-				$privileges[] = 'wiki';
 
 			// Get the DAO.
 			$employeeDao = new EmployeeDao();
@@ -325,8 +323,6 @@ class Manager_EmployeeController extends BaseController
 				$privileges[] = 'manager';
 			if ($this->getBool('security') && ($me->security || $me->admin))
 				$privileges[] = 'security';
-			if ($this->getBool('wiki') && ($me->wiki || $me->admin))
-				$privileges[] = 'wiki';
 
 			// Get the id of the employee to modify.
 			$id = $this->getInt('id');

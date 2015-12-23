@@ -8,7 +8,7 @@ class User_TimesheetController extends BaseController
 	function indexAction()
 	{
 		// Set the page title.
-		$this->view->title = "Timesheets";
+		$this->view->title = "Viewer";
 
 		// Get the employee id.
 		$id = $this->view->employee->id;
@@ -54,7 +54,7 @@ class User_TimesheetController extends BaseController
 	function viewAction()
 	{
 		// Set the page title.
-		$this->view->title = "Timesheets";
+		$this->view->title = "Viewer";
 
 		// Get the date within the pay period.
 		$date = $this->getStr('date');
@@ -106,7 +106,7 @@ class User_TimesheetController extends BaseController
 	function prevAction()
 	{
 		// Set the page title.
-		$this->view->title = "Timesheets";
+		$this->view->title = "Viewer";
 
 		// Get the current pay period start date.
 		$currstart = $this->getStr('currstart');
@@ -158,7 +158,7 @@ class User_TimesheetController extends BaseController
 	function nextAction()
 	{
 		// Set the page title.
-		$this->view->title = "Timesheets";
+		$this->view->title = "Viewer";
 
 		// Get the current pay period start date.
 		$currstart = $this->getStr('currstart');

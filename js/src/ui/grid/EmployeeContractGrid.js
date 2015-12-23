@@ -56,7 +56,7 @@ ui.grid.EmployeeContractGrid = Ext.extend(Ext.grid.GridPanel, {
 		// Iterate over the selected records.
 		for (var i = 0; i < records.length; i++)
 			// Add the id to the list.
-			ids.push(records[i].data.id);
+			ids.push(records[i].data.assignment_id);
 
 		// Return the ids.
 		return ids;

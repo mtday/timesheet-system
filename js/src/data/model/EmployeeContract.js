@@ -13,6 +13,14 @@ data.model.EmployeeContract = Ext.extend(Ext.util.Observable, {
 				hidden:    true,
 				sortable:  true
 			}, {
+				id:        'assignment_id',
+				name:      'assignment_id',
+				dataIndex: 'assignment_id',
+				header:    'Assignment ID',
+				width:     40,
+				hidden:    true,
+				sortable:  true
+			}, {
 				id:        'employee_id',
 				name:      'employee_id',
 				dataIndex: 'employee_id',

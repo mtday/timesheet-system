@@ -2,7 +2,7 @@
 /* Standard Elements */
 
 html, body {
-	background-color:		#073e62;
+	background-color:		white;
 	color:					#606060;
 	font-family:			'Trebuchet MS', Verdana, sans-serif;
 	font-size:				10pt;
@@ -122,56 +122,12 @@ h3 {
 	color:					#a7430c;
 }
 
-#title-banner #logo-banner #lower-navigation {
-	float:					right;
-	text-align:				right;
-	padding-top:			22px;
-	width:					800px;
-}
-
-#title-banner #logo-banner #lower-navigation ul {
-	margin:					0px;
-}
-
-#title-banner #logo-banner #lower-navigation li {
-	display:				inline;
-	list-style:				none;
-	padding:				0px 10px 0px 11px;
-}
-
-#title-banner #logo-banner #lower-navigation li.first {
-	border-left:			0px;
-}
-
-#title-banner #logo-banner #lower-navigation a {
-	color:					#073e62;
-	font-size:				9.5pt;
-}
-
-#title-banner #logo-banner #lower-navigation a:hover {
-	text-decoration:		none;
-}
-
-#title-banner #logo-banner #lower-navigation a:visited {
-	color:					#073e62;
-}
-
 
 /* Middle Banner */
 
 #middle-banner {
 	background-color:		#eae7d2;
 	border-bottom:			1px solid #cecab9;
-}
-
-#middle-banner #middle-banner-home {
-	background:				url(/images/framework/middlebanner.jpg) no-repeat;
-	height:					176px;/* Firefox */
-	#height:				190px;/* Internet Explorer */
-	padding:				14px 10px 0px 10px;
-	text-align:				left;
-	width:					780px;/* Firefox */
-	#width:					796px;/* Internet Explorer */
 }
 
 #middle-banner #middle-banner-aux {
@@ -231,168 +187,6 @@ h3 {
 	width:					206px;
 }
 
-/* Home page core services */
-
-#page #right-content #core-services {
-	margin:					0px;
-	padding-left:			18px;
-	padding-top:			0px;
-}
-
-#page #right-content #core-services li {
-	list-style-image:		url(/images/framework/bullet.gif);
-	list-style:				normal;
-	margin-left:			0px;
-}
-
-
-/* Contact Us page */
-
-#page #whole-page-content #contact-table {
-	padding-left:			24px;
-}
-
-#page #whole-page-content #contact-table .contact-label {
-	font-size:				10pt;
-	padding-right:			24px;
-	text-align:				right;
-	vertical-align:			top;
-}
-
-#page #whole-page-content #contact-table .contact-value {
-	font-size:				10pt;
-	vertical-align:			top;
-}
-
-#page #whole-page-content #contact-table .email {
-	font-size:				10pt;
-	vertical-align:			middle;
-}
-
-#page #whole-page-content #contact-table .email-description {
-	font-size:				9pt;
-	padding-left:			20px;
-	vertical-align:			middle;
-}
-
-
-/* Partners page */
-
-#page #whole-page-content #partner-table {
-	padding-left:			24px;
-}
-
-#page #whole-page-content #partner-table td {
-	padding:				14px;
-}
-
-#page #whole-page-content #partner-table .partner-image {
-	padding:				10px;
-	text-align:				center;
-	vertical-align:			top;
-	border:					1px solid #ccc3b9;
-}
-
-
-/* Page Footer */
-
-#footer-banner-home {
-	background-color:		#ffffff;
-	clear:					both;
-	height:					85px;
-	vertical-align:			bottom;
-}
-
-#footer-banner {
-	background-color:		#ffffff;
-	clear:					both;
-	height:					25px;
-	vertical-align:			bottom;
-}
-
-#footer {
-	font-size:				8pt;
-	padding-left:			8px;
-	width:					792px;
-}
-
-#footer a {
-	color:					#0e77bb;
-}
-
-#footer a:visited {
-	color:					#0e77bb;
-}
-
-#footer #copyright {
-	float:					left;
-	padding:				5px 10px 5px 4px;
-	text-align:				left;
-	width:					460px;
-}
-
-#footer #legal {
-	float:					right;
-	padding:				5px 10px 5px 10px;
-	text-align:				right;
-	width:					280px;
-}
-
-#footer #contact {
-	float:					left;
-	padding:				5px 10px 5px 4px;
-	text-align:				left;
-	width:					330px;
-}
-
-#footer #contact #address {
-	float:					left;
-	padding:				0px 30px 0px 0px;
-	text-align:				left;
-	white-space:			nowrap;
-}
-
-#footer #contact #phone {
-	float:					right;
-	padding:				0px 10px 0px 0px;
-	text-align:				left;
-	white-space:			nowrap;
-}
-
-#footer #host {
-	float:					right;
-	padding:				6px 10px 5px 10px;
-	text-align:				right;
-	width:					280px;
-}
-
-#footer #email {
-	float:					right;
-	padding:				5px 10px 5px 10px;
-	text-align:				right;
-	white-space:			nowrap;
-	width:					280px;
-}
-
-
-/* Lower Banner */
-
-#lower-banner-home {
-	background-color:		#073e62;
-	border-top:				1px solid #74afd6;
-	color:					#ebff99;
-	font-size:				8pt;
-	height:					20px;
-}
-
-#lower-banner {
-	background-color:		#073e62;
-	border-top:				1px solid #74afd6;
-	color:					#ebff99;
-	font-size:				8pt;
-	height:					1px;
-}
-
 
 /* Miscellaneous Styles */
 
@@ -406,12 +200,6 @@ h3 {
 
 .image-caption {
 	font-size:				8pt;
-}
-
-.li {
-	list-style-image:		url(/images/framework/bullet.gif);
-	list-style:				normal;
-	margin-left:			35px;
 }
 
 .table-label {

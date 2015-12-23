@@ -42,72 +42,6 @@ class LoginController extends BaseController
 				$this->view->failedAuthentication = true;
 				$this->view->loginForm = $form;
 			} else {
-				// Check to see if the employee has the wiki role.
-				if ($session->employee->wiki) {
-					// This code is used to automatically log the user
-					// into the wiki.
-
-					// Get the server name.
-					$svrName = $_SERVER['SERVER_NAME'];
-
-					// Create the HTTP client for invoking the wiki API.
-					$client = new Zend_Http_Client(
-							"http://$svrName/wiki/api.php", array(
-						'maxredirects' => 0,
-						'timeout'      => 10));
-
-					// Store cookies in the client.
-					$client->setCookieJar();
-
-					// Set the client parameters.
-					$client->setParameterPost(array(
-						'format'     => 'xml',
-						'action'     => 'login',
-						'lgname'     => $values['login'],
-						'lgpassword' => $values['password']
-					));
-
-					// Capture the wiki response.
-					$wikiresp = $client->request(Zend_Http_Client::POST);
-
-					// Check for an error.
-					if (! $wikiresp->isError()) {
-						// Parse the body for the token.
-						$parts = preg_split('/token="/', $wikiresp->getBody());
-						$parts = preg_split('/"/', $parts[1]);
-						$token = $parts[0];
-
-						$client->setParameterPost(array(
-							'format'     => 'xml',
-							'action'     => 'login',
-							'lgtoken'    => $token,
-							'lgname'     => $values['login'],
-							'lgpassword' => $values['password']
-						));
-
-						// Capture the wiki response.
-						$wikiresp = $client->request(Zend_Http_Client::POST);
-
-						// Check for an error.
-						if (! $wikiresp->isError()) {
-							// Get the cookie jar.
-							$cookiejar = $client->getCookieJar();
-
-							// Get all the cookies.
-							$cookies = $cookiejar->getAllCookies(
-									Zend_Http_CookieJar::COOKIE_OBJECT);
-
-							// Add the MediaWiki cookies.
-							foreach ($cookies as $cookie)
-								// Add the cookie.
-								setcookie($cookie->getName(),
-										$cookie->getValue(),
-										$cookie->getExpiryTime(), "/",
-										$cookie->getDomain());
-						}
-					}
-				}
-
 				// Authentication succeeded. Determine where to go.
 				$this->_helper->redirector('index', 'timesheet', 'user');
 
@@ -168,10 +102,10 @@ class LoginController extends BaseController
 
 						$mail = new Zend_Mail();
 						$mail->setBodyText("\nForgot Password Request:\n\n" .
-								"The milestoneintelligence.com web site received a request \n" .
+								"Your company timesheet system web site received a request \n" .
 								"indicating your account password was forgotten and should \n" .
 								"be reset. If you did not make this request, please notify the\n" .
-								"web site administrator (web@milestoneintelligence.com).\n\n" .
+								"web site administrator.\n\n" .
 								"Here is your new login information:\n" .
 								"      Login:    $login\n" .
 								"      Password: $password\n\n" .
@@ -179,7 +113,7 @@ class LoginController extends BaseController
 								"your profile information.\n")
 							 ->setFrom($config->from, $config->name)
 							 ->addTo($employee->email, $employee->full_name)
-							 ->setSubject('Milestone Web Site - Password Reset')
+							 ->setSubject('Timesheet System - Password Reset')
 							 ->send($transport);
 
 						// Create the JSON object to return.
@@ -189,7 +123,7 @@ class LoginController extends BaseController
 							'to the email address associated with your account. ' .
 							'Please check your email for your updated login info. ' .
 							'If you have any problems, please contact the web site ' .
-							'administrator (web@milestoneintelligence.com).';
+							'administrator.';
 
 						// Set a random password on the user account.
 						$employee->hashed_pass = hash('SHA512', $password);
@@ -216,8 +150,7 @@ class LoginController extends BaseController
 						$json->success = false;
 						$json->msg = 'No email address is specified within your ' .
 							'profile information, so your password was not reset. ' .
-							'Please contact the web site administrator ' .
-							'(web@milestoneintelligence.com) for your new password.';
+							'Please contact the web site administrator for your new password.';
 					}
 				} else {
 					// No user account found.

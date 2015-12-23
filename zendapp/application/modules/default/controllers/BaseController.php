@@ -70,17 +70,6 @@ class BaseController extends Zend_Controller_Action
 					$this->_helper->layout->setLayout('manage');
 			}
 
-			// Check to see if the user is trying to access a security page.
-			else if (preg_match("/^\/security/i", $requestUri)) {
-				// Make sure the employee is in security.
-				if (! isset($session->employee) || ! $session->employee->security)
-					// Redirect to the home page.
-					$this->_helper->redirector('index', 'index', 'default');
-				else
-					// Set the manage layout.
-					$this->_helper->layout->setLayout('manage');
-			}
-
 			// Check to see if the user is trying to access a supervisor page.
 			else if (preg_match("/^\/supervisor/i", $requestUri)) {
 				// Make sure the employee is a supervisor.
@@ -108,10 +97,11 @@ class BaseController extends Zend_Controller_Action
 				$session->payPeriod = $payPeriodDao->getCurrent();
 
 				// Make sure the pay period was found.
-				if (!isset($session->payPeriod))
+				if (!isset($session->payPeriod)) {
 					// Make sure all the pay periods exist in the database,
 					// then retrieve the current pay period.
 					$session->payPeriod = $payPeriodDao->addThroughCurrent();
+                }
 			}
 		} catch (Zend_Exception $ex) {
 			// Log the exception.

@@ -122,28 +122,6 @@ data.model.Employee = Ext.extend(Ext.util.Observable, {
 				renderer:  function(val) {
 					return ("" + val) == "1" ? "Yes" : "No";
 				}
-			}, {
-				id:        'security',
-				name:      'security',
-				dataIndex: 'security',
-				header:    'Security',
-				width:     60,
-				hidden:    true,
-				sortable:  true,
-				renderer:  function(val) {
-					return ("" + val) == "1" ? "Yes" : "No";
-				}
-			}, {
-				id:        'wiki',
-				name:      'wiki',
-				dataIndex: 'wiki',
-				header:    'Wiki',
-				width:     60,
-				hidden:    true,
-				sortable:  true,
-				renderer:  function(val) {
-					return ("" + val) == "1" ? "Yes" : "No";
-				}
 			}
 		];
 	},

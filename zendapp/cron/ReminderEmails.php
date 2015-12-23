@@ -192,8 +192,7 @@ try {
 Incomplete Timesheet Notice:
 
 Please be sure to enter timesheet hours on a daily basis. This is a Defense
-Contract Auditing Agency (DCAA) requirement with which Milestone employees must
-comply.
+Contract Auditing Agency (DCAA) requirement with which employees must comply.
 
 Notices like this may impact your annual performance review. This is an
 automated message - if you have any questions, please contact your supervisor.

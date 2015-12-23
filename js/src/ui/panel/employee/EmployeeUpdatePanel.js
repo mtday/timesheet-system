@@ -93,7 +93,7 @@ ui.panel.employee.EmployeeUpdatePanel = Ext.extend(Ext.Panel, {
 					xtype:      'checkboxgroup',
 					fieldLabel: 'Privileges',
 					name:       'privileges',
-					columns:    2,
+					columns:    3,
 					items: (isAdmin ? [
 						{
 							boxLabel:   'Admin',
@@ -113,20 +113,6 @@ ui.panel.employee.EmployeeUpdatePanel = Ext.extend(Ext.Panel, {
 							boxLabel:   'Manager',
 							name:       'manager',
 							id:         'privileges-modify-manager',
-							inputValue: 1
-						}
-					] : []).concat(isSecurity || isAdmin ? [
-						{
-							boxLabel:   'Security',
-							name:       'security',
-							id:         'privileges-modify-security',
-							inputValue: 1
-						}
-					] : []).concat(isWiki || isAdmin ? [
-						{
-							boxLabel:   'Wiki',
-							name:       'wiki',
-							id:         'privileges-modify-wiki',
 							inputValue: 1
 						}
 					] : [])
@@ -213,14 +199,6 @@ ui.panel.employee.EmployeeUpdatePanel = Ext.extend(Ext.Panel, {
 			this.form.getForm().findField('privileges').
 				setValue('privileges-modify-manager',
 						employee.data.manager == "1");
-		if (isSecurity)
-			this.form.getForm().findField('privileges').
-				setValue('privileges-modify-security',
-						employee.data.security == "1");
-		if (isWiki)
-			this.form.getForm().findField('privileges').
-				setValue('privileges-modify-wiki',
-						employee.data.wiki == "1");
 
 		this.form.getForm().findField('active').
 			setValue('employee-active-modify-yes', employee.data.active == "1");

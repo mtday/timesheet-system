@@ -98,7 +98,7 @@ ui.panel.employee.EmployeeAddPanel = Ext.extend(Ext.form.FormPanel, {
 					xtype:      'checkboxgroup',
 					fieldLabel: 'Privileges',
 					name:       'privileges',
-					columns:    2,
+					columns:    3,
 					items: (isAdmin ? [
 						{
 							boxLabel:   'Admin',
@@ -120,22 +120,6 @@ ui.panel.employee.EmployeeAddPanel = Ext.extend(Ext.form.FormPanel, {
 							boxLabel:   'Manager',
 							name:       'manager',
 							id:         'privileges-manager',
-							inputValue: 1,
-							checked:    false
-						}
-					] : []).concat(isSecurity || isAdmin ? [
-						{
-							boxLabel:   'Security',
-							name:       'security',
-							id:         'privileges-security',
-							inputValue: 1,
-							checked:    false
-						}
-					] : []).concat(isWiki || isAdmin ? [
-						{
-							boxLabel:   'Wiki',
-							name:       'wiki',
-							id:         'privileges-wiki',
 							inputValue: 1,
 							checked:    false
 						}

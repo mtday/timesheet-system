@@ -1,7 +1,9 @@
 
-INSERT INTO employees (`id`, `login`, `hashed_pass`, `email`, `first_name`, `last_name`, `suffix`, `division`, `personnel_type`) VALUES
-(1, 'user1', 'cf099c00087b3c7d3d34f5858b170f9cab94806d78aa04414cfd429956feb8abf1c3cc42125ccd0c03f9b3a14118397a878ae97bfd50b5478ede5098de71fd92', 'user1@wherever.com', 'User', 'One', NULL, 'Engineering Division', 'Employee'),
-(2, 'user2', 'cf099c00087b3c7d3d34f5858b170f9cab94806d78aa04414cfd429956feb8abf1c3cc42125ccd0c03f9b3a14118397a878ae97bfd50b5478ede5098de71fd92', 'user2@wherever.com', 'User', 'Two', NULL, 'Marketing Division', 'Employee');
+INSERT INTO employees (`id`, `login`, `email`, `first_name`, `last_name`, `suffix`, `division`, `personnel_type`, `hashed_pass`) VALUES
+(1, 'user1', 'user1@wherever.com', 'User', 'One', NULL, 'Engineering Division', 'Employee',
+    'b109f3bbbc244eb82441917ed06d618b9008dd09b3befd1b5e07394c706a8bb980b1d7785e5976ec049b46df5f1326af5a2ea6d103fd07c95385ffab0cacbc86'),
+(2, 'user2', 'user2@wherever.com', 'User', 'Two', NULL, 'Marketing Division', 'Employee',
+    'b109f3bbbc244eb82441917ed06d618b9008dd09b3befd1b5e07394c706a8bb980b1d7785e5976ec049b46df5f1326af5a2ea6d103fd07c95385ffab0cacbc86');
 
 INSERT INTO roles (`name`, `employee_id`) VALUES
 ('admin', 1),

@@ -1,6 +1,4 @@
 
-DROP TABLE IF EXISTS contacts;
-DROP TABLE IF EXISTS forms;
 DROP TABLE IF EXISTS holidays;
 DROP TABLE IF EXISTS audit_logs;
 DROP TABLE IF EXISTS timesheets;
@@ -168,34 +166,5 @@ CREATE TABLE IF NOT EXISTS holidays (
 
     CONSTRAINT unique_holiday_desc UNIQUE (`description`),
     CONSTRAINT unique_holiday_config UNIQUE (`config`)
-);
-
-CREATE TABLE IF NOT EXISTS forms (
-    `id`             INTEGER      NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    `name`           VARCHAR(228) NOT NULL,
-    `file_name`      VARCHAR(228) NOT NULL,
-    `description`    LONGTEXT     NOT NULL,
-    `last_update`    TIMESTAMP    NOT NULL DEFAULT NOW(),
-
-    CONSTRAINT unique_form_name UNIQUE (`name`),
-    CONSTRAINT unique_form_file_name UNIQUE (`file_name`)
-);
-
-CREATE TABLE IF NOT EXISTS contacts (
-    `id`            INTEGER      NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    `company_name`  VARCHAR(255) NOT NULL,
-    `poc_name`      VARCHAR(80)  NOT NULL,
-    `poc_title`     VARCHAR(255),
-    `poc_phone`     VARCHAR(20),
-    `poc_phone2`    VARCHAR(20),
-    `poc_fax`       VARCHAR(20),
-    `poc_email`     VARCHAR(255),
-    `street`        VARCHAR(80),
-    `city`          VARCHAR(50),
-    `state`         VARCHAR(50),
-    `zip`           INTEGER,
-    `comments`      LONGTEXT,
-
-    INDEX idx_contacts_company_name USING HASH (`company_name`)
 );
 

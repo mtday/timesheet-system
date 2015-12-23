@@ -23,13 +23,12 @@ class Manager_AssignmentController extends BaseController
 			$assignmentDao = new ContractAssignmentDao();
 
 			// Add the assignment.
-			$assignmentDao->add($data);
+			$assignmentId = $assignmentDao->add($data);
 
 			// Retrieve the new assignment.
-			$assignment = $assignmentDao->getAssignment(
-					$data['contract_id'], $data['employee_id']);
+			$assignment = $assignmentDao->getAssignment($assignmentId);
 
-			// Make sure the asignment was returned.
+			// Make sure the assignment was returned.
 			if (isset($assignment)) {
 				// Create the JSON object to return.
 				$json = new stdClass();

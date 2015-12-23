@@ -86,8 +86,6 @@ class Bootstrap
 				'/application/modules/manager/controllers',
 			'payroll'    => self::$root .
 				'/application/modules/payroll/controllers',
-			'security'   => self::$root .
-				'/application/modules/security/controllers',
 			'supervisor' => self::$root .
 				'/application/modules/supervisor/controllers',
 			'user'       => self::$root .

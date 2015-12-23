@@ -2,7 +2,7 @@
 <html>
   <head>
 	<!-- The title of this page. -->
-	<title>Milestone - <?php echo $this->escape($this->title) ?></title>
+	<title>Timesheets - <?php echo $this->escape($this->title) ?></title>
 	
 	<!-- Include the meta tags. -->
 	<?php include('ssi/metatags.inc'); ?>
@@ -40,14 +40,6 @@
 	<?php if ($this->scripts == "holiday"): ?>
 	  <!-- Add the holiday management scripts. -->
       <?php include('ssi/scripts_holiday_mgmt.inc'); ?>
-	<?php endif; ?>
-	<?php if ($this->scripts == "security"): ?>
-	  <!-- Add the security management scripts. -->
-      <?php include('ssi/scripts_security_mgmt.inc'); ?>
-	<?php endif; ?>
-	<?php if ($this->scripts == "contact"): ?>
-	  <!-- Add the contact management scripts. -->
-      <?php include('ssi/scripts_contact_mgmt.inc'); ?>
 	<?php endif; ?>
 
   </head>

@@ -60,7 +60,6 @@ class EmployeeDao extends BaseDao
 			if (!isset($obj->manager))  $obj->manager  = false;
 			if (!isset($obj->payroll))  $obj->payroll  = false;
 			if (!isset($obj->security)) $obj->security = false;
-			if (!isset($obj->wiki))     $obj->wiki     = false;
 		}
 
 		// Make sure the supervised are available.

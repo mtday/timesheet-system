@@ -21,10 +21,5 @@
 	<!-- Add the activities available for administrators. -->
 	<li><a href="/admin/holiday">Holidays</a></li>
   <?php endif; ?>
-
-  <?php if ($this->employee->manager): ?>
-	<!-- Add the manager activities. -->
-	<li><a href="/manager/contact">Contacts</a></li>
-  <?php endif; ?>
 </ul>
 

@@ -166,7 +166,7 @@ class BaseDao extends Zend_Db_Table
 				if (is_numeric($id))
 					// Update the object in the database.
 					$count += $db->update($this->_name,
-							array('active' => false), "id = $id");
+							array('active' => 0), "id = $id");
 
 		// Return the count.
 		return $count;
@@ -195,7 +195,7 @@ class BaseDao extends Zend_Db_Table
 				if (is_numeric($id))
 					// Update the object in the database.
 					$count += $db->update($this->_name,
-							array('active' => true), "id = $id");
+							array('active' => 1), "id = $id");
 
 		// Return the count.
 		return $count;

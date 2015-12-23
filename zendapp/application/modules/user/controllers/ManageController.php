@@ -14,15 +14,15 @@ class User_ManageController extends BaseController
 		$emp = $this->view->employee;
 
 		// Determine where to go based on the employee's roles.
-		if ($emp->supervisor)
-			// Redirect to the supervisor page.
-			$this->_helper->redirector('index', 'index', 'supervisor');
+		if ($emp->manager)
+			// Redirect to the manager page.
+			$this->_helper->redirector('index', 'index', 'manager');
 		else if ($emp->payroll)
 			// Redirect to the payroll page.
 			$this->_helper->redirector('index', 'index', 'payroll');
-		else if ($emp->manager)
-			// Redirect to the manager page.
-			$this->_helper->redirector('index', 'index', 'manager');
+		else if ($emp->supervisor)
+			// Redirect to the supervisor page.
+			$this->_helper->redirector('index', 'index', 'supervisor');
 		else
 			// This user doesn't have the appropriate roles.
 			throw new Exception("Employee $emp->full_name has no management "
