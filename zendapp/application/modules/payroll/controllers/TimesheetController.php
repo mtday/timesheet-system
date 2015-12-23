@@ -335,7 +335,7 @@ class Payroll_TimesheetController extends BaseController
 		$qbdata = $timesheetDao->export($ids, $me, $config);
 
 		// Define the output file.
-		$OUTFILE = dirname(dirname(__FILE__)) . '/timesheet-export.iif';
+		$OUTFILE = tempnam(sys_get_temp_dir(), 'timesheet-export-iif');
 
 		// Write the file data.
 		$handle = fopen($OUTFILE, "w");
@@ -358,6 +358,9 @@ class Payroll_TimesheetController extends BaseController
 		// Disable the view and layout.
 		$this->view->layout()->disableLayout();
         $this->_helper->viewRenderer->setNoRender(true);
+
+        // Delete the temporary output file.
+        unlink($OUTFILE);
 	}
 
 	/**

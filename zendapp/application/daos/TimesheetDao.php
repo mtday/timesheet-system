@@ -240,7 +240,7 @@ class TimesheetDao extends BaseDao
 
 				// Update the object in the database.
 				$db->update($this->_name,
-						array('exported' => true), "id = $timesheet->id");
+						array('exported' => 1), "id = $timesheet->id");
 
 				// Add an audit log for this timesheet verification.
 				$auditLogDao->add(array(
@@ -282,7 +282,7 @@ class TimesheetDao extends BaseDao
 				if (is_numeric($id)) {
 					// Update the object in the database.
 					$count += $db->update($this->_name,
-						array('exported' => false), "id = $id");
+						array('exported' => 0), "id = $id");
 
 					// Add an audit log for this timesheet verification.
 					$auditLogDao->add(array(
