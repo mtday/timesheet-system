@@ -156,9 +156,8 @@ ui.panel.login.LoginPanel = Ext.extend(Ext.form.FormPanel, {
 					border:    false,
 					frame:     false,
 					bodyStyle: 'padding: 0px 0px 15px 0px;',
-					html: '<small>If you already have an account, enter ' +
-						  'your login credentials below to access ' +
-					      'the employee-only area of this site.</small>'
+					html: '<small>Enter your login credentials below. If you do ' +
+					      'not have an account, contact your supervisor.</small>'
 				}),
 				form.login,
 				form.passwd,
