@@ -171,7 +171,23 @@ enter their hours, and the system can notify supervisors when employees have com
 values for these properties depends on the configuration of your mail server. Check with your mail system administrator
 for the correct values to place in this section.
 
-TODO: QuickBooks configuration
+The last section in the configuration file involves configuring the system to be able to integrate with QuickBooks.
+The QuickBooks company name and creation time are required fields in the timer data files used to import hour data in
+the timesheet system into QuickBooks. To find out the company name and creation time, open up QuickBooks and choose
+File -> Utilities -> Export -> Timer Lists. Follow this process to save a file with an `iif` extension onto your
+workstation. Open up this file with a text editor and the top two lines will look like this:
+
+    !TIMERHDR   VER  REL  COMPANYNAME   IMPORTEDBEFORE   FROMTIMER   COMPANYCREATETIME
+    TIMERHDR     8    0   "MyCompany, Inc."   N              N        1280802993
+
+The two values needed are on the second line, and indicate the company name (`MyCompany, Inc.` in the above example),
+along with the encoded creation time (`1280802993` in the above example). Copy these values exactly as they appear
+in this file into the config.ini file. Make sure you remove the double quotes around the company name since those are
+not needed, but make sure you retain any commas and periods and space characters.
+
+The last QuickBooks configuration value is the payroll vendor. The payroll vendor should come from the "Name" column
+in the QuickBooks list of vendors in the Vendor Center. The payroll vendor is used to create time entries against
+the vendor so that bills can automatically be populated with employee time expenses based on hours worked.
 
 Depending on the configuration of your web server and the user account under which it runs, the timesheet system may
 not have the ability to write to the system log file. Create the log file `/opt/timesheet-system/zendapp/logs/app.log`
