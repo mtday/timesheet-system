@@ -96,35 +96,92 @@ documentation readily available that describes how to install MySQL on your host
 suitable tutorial and step through the process until you have MySQL up and running and accessible through the MySQL
 shell.
 
-TODO
+The next step involves editing the `opt/timesheet-system/zendapp/database/initialize.sql` file to set up the correct
+pay period information for your company. Find the lines in the file that look like these:
 
-Edit the initialize.sql file to set up an initial user, the administrative contracts, and the first pay period.
+    INSERT INTO pay_periods (`start`, `end`, `type`) VALUES
+    ('2015-12-01', '2015-12-15', 'semimonthly');
 
-TODO
+The start and end dates (shown as `2015-12-01` and `2015-12-15` in the above example) need to be changed to reflect
+one of your company pay periods. It does not matter which pay period you choose to enter in here - it can be a year
+old or a year into the future, but it has to match up with a real pay period in your company. These pay periods
+define how which days show up in each timesheet, along with how payroll and the timesheet approval process is
+managed. The last field indicates the type of pay periods your company uses, and is shown as `semimonthly` in the
+above example. This value needs to accurately reflect the type of pay periods used by your company, and should be
+one of these values:
 
-  create database timesheetsystem_db;
-  create user timesheetsystem_db identified by 'timesheetsystem_db';
-  grant all on timesheetsystem_db.* to timesheetsystem_db@localhost identified by 'timesheetsystem_db';
-  use timesheetsystem_db;
-  source /opt/timesheet-system/zendapp/database/db.sql
-  source /opt/timesheet-system/zendapp/database/initialize.sql
-  quit
+  - weekly - the company pay periods are managed every week
+  - biweekly - the company pay periods fall into two-week cycles
+  - semimonthly - the company has exactly two pay periods every month
 
+Note that you only need to specify one valid pay period in this file, and the system will automatically calculate
+all the rest of the pay periods based on the one provided.
+
+The remaining items in this file can all be modified through the timesheet system web interface, so no other changes
+are required in this file.
+
+The next step is to log into the mysql console as the root user and enter these commands to initialize the
+database used by the timesheet system. First, create the database. The database name shown in this line is `ts_db`.
+Remember this value because we will need it later during configuration as the value for `db.dbname`.
+
+    create database ts_db;
+
+Next, create the database user and password. The command below uses `ts_user` as the user name and `ts_pass` as the
+password, but you can choose whichever values you prefer here. Whatever you choose, remember these values because they
+will be needed later during configuration as the values for `db.username` and `db.password`.
+
+    create user ts_user identified by 'ts_pass';
+
+This next command grants the new user access to the database. Use the same database name, username, and password that
+was specified in the previous two commands here also.
+
+    grant all on ts_db.* to ts_user@localhost identified by 'ts_pass';
+
+Switch to the database we just created.
+
+    use ts_db;
+
+Load the database schema using the database creation script.
+
+    source /opt/timesheet-system/zendapp/database/db.sql
+
+Load some initial data into the database.
+
+    source /opt/timesheet-system/zendapp/database/initialize.sql
+
+We are done executing commands in the MySQL shell, so exit the shell.
+
+    quit
 
 
 ###### Configuring the Timesheet System
 
-TODO
+Now that the database has been configured, we are ready to configure the timesheet system. The timesheet system
+configuration is located in the `/opt/timesheet-system/zendapp/config/config.ini` file. Open this file in a text
+editor so the values can be updated.
 
-File is /opt/timesheet-system/zendapp/config/config.ini
+The first thing to change is the database configuration properties, which all begin with "db." in the file. Make sure
+the "db.dbname" value matches the database name you chose when configuring MySQL in the previous step. Also, make sure
+the "db.username" and "db.password" values match the database user and password you created.
 
-Database configuration
-Email server configuration
-QuickBooks configuration
+The email configuration properties are required in order for the timesheet system to be able to send emails. The
+ability to send emails is required in order for the "Forgot Password" functionality to work correctly (which resets
+user passwords and then emails them the new value). Also, the system can send reminder emails to employees that need to
+enter their hours, and the system can notify supervisors when employees have completed their timesheets. The appropriate
+values for these properties depends on the configuration of your mail server. Check with your mail system administrator
+for the correct values to place in this section.
 
-Create file /opt/timesheet-system/zendapp/logs/app.log and chmod 777 that file
+TODO: QuickBooks configuration
 
-Use cron to turn on the /opt/timesheet-system/zendapp/cron/ReminderEmails.php script
+Depending on the configuration of your web server and the user account under which it runs, the timesheet system may
+not have the ability to write to the system log file. Create the log file `/opt/timesheet-system/zendapp/logs/app.log`
+and make it world-writable using commands like these:
+
+    touch /opt/timesheet-system/zendapp/logs/app.log
+    chmod 777 /opt/timesheet-system/zendapp/logs/app.log
+
+If you want to allow the timesheet system to send reminder emails to users that have not entered timesheet hours, then
+configure cron to invoke the `/opt/timesheet-system/zendapp/cron/ReminderEmails.php` script using the php interpreter.
 
 
 ### QuickBooks Integration
